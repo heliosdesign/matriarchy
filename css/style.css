@@ -1,0 +1,82 @@
+@import url('standardize.css');
+
+* { 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box; 
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.wrapper {
+    
+    margin: 0 auto;
+    max-width: 800px;
+    width: 90%;
+}
+
+.container {
+    border: 1px solid red;
+    padding-top: 56.25%;
+    position: relative;
+    width: 100%;
+}
+
+.pane-container {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.pane {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+}
+
+.right {
+    width: 100%;
+}
+
+.left {
+    overflow: hidden;
+    width: 50%;
+}
+
+/*#resizable:before {
+    background: grey;
+    content: '';
+    cursor: ew-resize;
+    right: -5px;
+    height: 30px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    z-index: 1;
+}*/
+
+#resizable .ui-resizable-e {
+    background: white;
+    cursor: ew-resize;
+    z-index: 1000;
+}
+
+.video {
+    background: black;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+#video-left {
+    height: 100%;
+    width: 800px;
+}
