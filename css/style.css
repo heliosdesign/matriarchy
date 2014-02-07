@@ -19,9 +19,39 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+nav {
+    background:rgba(0,0,0,0.85);
+    position: absolute;
+    top: 10;
+    left: 0;
+    z-index: 200;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ccc;
+}
+
 video {
     background: black;
-    height: 100%;
+    bottom: 0;
+    position: absolute;
+    height: auto;
     width: 100%;
 }
 
@@ -29,11 +59,12 @@ audio {
     display: none;
 }
 
-.video-container {
+.panel {
     height: 100%;
+    overflow: hidden;
     position: absolute;
     top: 0;
-    width: 98%;
+    width: 92%;
 
     -webkit-transition: left 5000ms;
     -moz-transition: left 5000ms;
@@ -41,24 +72,23 @@ audio {
     transition: left 5000ms;
 }
 
-.video-container h2 {
-    text-align: center;
+.master-panel {
+    border-right: 1px solid red;
+    left: 0%; 
 }
 
-.master {
-    left: 0%;
-}
-
-.secondary {
+.right-panel {
     left: 92%;
     z-index: 100;
 }
 
-.secondary:hover {
-    left: 6%;
-}
+.right-panel:hover { left: 8%; }
 
-.secondary:hover + .master {
-    left: -92%;
-}
+.right-panel:hover + .master-panel { left: -84%; }
 
+@media screen and (max-aspect-ratio: 18/9) {
+    video {
+        height: 100%;
+        width: auto;
+    }
+}
