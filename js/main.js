@@ -118,7 +118,7 @@
         }
     };
 
-    Handlers = {
+    var Handlers = {
         init: function() {
             $('#left-panel').hover(function() {
                 $( '#vid-wrapper' ).addClass('show-left');
@@ -134,7 +134,29 @@
         }
     }
 
+    var PC = {
+        popMaster: Popcorn('#master-video'),
+        popRight: Popcorn('#slave-right-video'),
+        popLeft: Popcorn('#slave-left-video'),
+        init: function() {
+           PC.popMaster.code({
+                start: 1,
+                end: 3,
+                onStart: PC.starting,
+                onEnd: PC.ending,
+                target: 'master'
+            });
+        },
+        starting: function(options) {
+            console.log(options);
+        },
+        ending: function(options) {
+
+        }
+    }
+
     Vid.init();
     Handlers.init();
+    PC.init();
 
 })();
