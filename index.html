@@ -9,12 +9,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="right-panel" class="right-panel panel">
-        <video src="assets/video/heide_slave.webm" id="slave-video" preload="none" muted></video>
+
+    <div id="vid-wrapper">
+        <div id="left-panel" class="left-panel panel">
+            <video src="assets/video/heide_slave_left.webm" id="slave-left-video" preload="none" muted></video>
+        </div>
+        <div id="master-panel" class="master-panel panel">
+            <video src="assets/video/heide_master.webm" id="master-video" preload="none" controls></video>
+        </div>
+        <div id="right-panel" class="right-panel panel">
+            <video src="assets/video/heide_slave_right.webm" id="slave-right-video" preload="none" muted></video>
+        </div>
     </div>
-    <div id="master-panel" class="master-panel panel">
-        <video src="assets/video/heide_master.webm" id="master-video" preload="none" controls></video>
-    </div>
+        
+
+    
 
     <nav id="main-nav">
         <ul>

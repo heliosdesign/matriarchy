@@ -59,12 +59,11 @@ audio {
     display: none;
 }
 
-.panel {
+#vid-wrapper {
     height: 100%;
-    overflow: hidden;
+    left: -88%;
     position: absolute;
-    top: 0;
-    width: 92%;
+    width: 276%;
 
     -webkit-transition: left 5000ms;
     -moz-transition: left 5000ms;
@@ -72,19 +71,22 @@ audio {
     transition: left 5000ms;
 }
 
-.master-panel {
-    border-right: 1px solid red;
-    left: 0%; 
+#vid-wrapper.show-left {
+    left: 0;
 }
 
-.right-panel {
-    left: 92%;
-    z-index: 100;
+#vid-wrapper.show-right {
+    left: -176%;
 }
 
-.right-panel:hover { left: 8%; }
-
-.right-panel:hover + .master-panel { left: -84%; }
+.panel {
+    height: 100%;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    width: 33.3333333333%;
+}
 
 @media screen and (max-aspect-ratio: 18/9) {
     video {

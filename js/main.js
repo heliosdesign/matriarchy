@@ -26,12 +26,14 @@
 
     var vidState = {
         master: {},
-        slave: {}
+        slaveRight: {},
+        slaveLeft: {}
     };
 
     var Vid = {
         master: document.getElementById('master-video'),
-        slave: document.getElementById('slave-video'),
+        slaveRight: document.getElementById('slave-right-video'),
+        slaveLeft: document.getElementById('slave-left-video'),
         init: function() {
             Vid.listeners();
             Vid.master.load();
@@ -40,15 +42,15 @@
             Vid.master.oncanplaythrough = function() {
                 console.log('Master Can Play')
                 vidState.master.ready = true;
-                Vid.slave.load();
+                Vid.slaveRight.load();
             }
 
             Vid.master.onwaiting = function() {
                 console.log('Master is waiting for buffer');
                 vidState.master.playing = false;
-                if (vidState.slave.playing) {
-                    Vid.slave.pause();
-                    vidState.slave.playing = false;
+                if (vidState.slaveRight.playing) {
+                    Vid.slaveRight.pause();
+                    vidState.slaveRight.playing = false;
                 }
                 window.cancelAnimationFrame();
             }
@@ -62,16 +64,22 @@
                 if ($('.panel').is(':hidden')) {
                     $('.panel').fadeIn(1000);
                 }
-                if (!vidState.slave.playing) {
-                    Vid.slave.play();
-                    vidState.slave.playing = true;
+                if (!vidState.slaveRight.playing) {
+                    Vid.slaveRight.play();
+                    vidState.slaveRight.playing = true;
                 }
                 Vid.sync();
             }
 
-            Vid.slave.oncanplaythrough = function() {
-                console.log('Slave can play.')
-                vidState.slave.ready = true;
+            Vid.slaveRight.oncanplaythrough = function() {
+                console.log('Right slave can play.');
+                vidState.slaveRight.ready = true;
+                Vid.slaveLeft.load();
+            }
+
+            Vid.slaveLeft.oncanplaythrough = function() {
+                console.log('Left slave can play.');
+                vidState.slaveLeft.ready = true;
                 Vid.master.play();
                 vidState.master.playing = true;
             }
@@ -83,26 +91,50 @@
         },
         sync: function() {
 
-            if (Math.abs(Vid.master.currentTime - Vid.slave.currentTime) > 0.2 && Vid.master.currentTime < Vid.slave.duration) {
-                Vid.slave.currentTime = Vid.master.currentTime;
+            if (Math.abs(Vid.master.currentTime - Vid.slaveRight.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveRight.duration) {
+                Vid.slaveRight.currentTime = Vid.master.currentTime;
+            }
+
+            if (Math.abs(Vid.master.currentTime - Vid.slaveLeft.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveLeft.duration) {
+                Vid.slaveLeft.currentTime = Vid.master.currentTime;
             }
         
             window.requestAnimationFrame(Vid.sync);
         },
         switchVideo: function(src) {
             Vid.master.pause();
-            Vid.slave.pause();
+            Vid.slaveRight.pause();
+            Vid.slaveLeft.pause();
             vidState.master.playing = false;
-            vidState.slave.playing = false;
+            vidState.slaveRight.playing = false;
+            vidState.slaveLeft.playing = false;
 
             $('.panel').fadeOut(1000, function(){
                 Vid.master.src = 'assets/video/' + src + '_master.webm';
-                Vid.slave.src = 'assets/video/' + src + '_slave.webm';
+                Vid.slaveRight.src = 'assets/video/' + src + '_slave_right.webm';
+                Vid.slaveLeft.src = 'assets/video/' + src + '_slave_left.webm'
                 Vid.master.load();
             });
         }
     };
 
+    Handlers = {
+        init: function() {
+            $('#left-panel').hover(function() {
+                $( '#vid-wrapper' ).addClass('show-left');
+            }, function() {
+                $( '#vid-wrapper' ).removeClass('show-left');
+            });
+
+            $('#right-panel').hover(function() {
+                $( '#vid-wrapper' ).addClass('show-right');
+            }, function() {
+                $( '#vid-wrapper' ).removeClass('show-right');
+            });
+        }
+    }
+
     Vid.init();
+    Handlers.init();
 
 })();
