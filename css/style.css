@@ -50,8 +50,6 @@ nav a:hover {
 
 video {
     background: black;
-    bottom: 0;
-    position: absolute;
     height: auto;
     width: 100%;
 }
@@ -95,9 +93,9 @@ audio {
     width: 33.3333333333%;
 }
 
-@media screen and (max-aspect-ratio: 18/9) {
+/*@media screen and (max-aspect-ratio: 18/9) {
     video {
         height: 100%;
         width: auto;
     }
-}
+}*/
