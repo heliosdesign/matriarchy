@@ -7,6 +7,17 @@ body {
     overflow: hidden;
 }
 
+@font-face {
+    font-family: 'parks';
+    src:url('../fonts/parks.eot');
+    src:url('../fonts/parks.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/parks.woff') format('woff'),
+        url('../fonts/parks.ttf') format('truetype'),
+        url('../fonts/parks.svg#parks') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * { 
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
@@ -91,6 +102,34 @@ audio {
     overflow: hidden;
     top: 0;
     width: 33.3333333333%;
+}
+
+.nav-icons {
+    font-family: 'parks';
+    position: absolute;
+    font-size:3.5em;
+    color: #ff0000;
+    pointer-events:none;
+    width:50px;
+    height:100%;
+    top:40%;
+}
+
+.nav-icons-left{
+    left:0px;
+}
+
+.nav-icons-right{
+    right:0px;
+}
+
+
+.nav-icons-left:before {
+    content: "\e011";
+}
+
+.nav-icons-right:before {
+    content: "\e012";
 }
 
 @media screen and (max-aspect-ratio: 18/9) {

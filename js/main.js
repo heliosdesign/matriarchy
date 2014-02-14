@@ -81,6 +81,8 @@
                 console.log('Left slave can play.');
                 vidState.slaveLeft.ready = true;
                 Vid.master.play();
+                Vid.slaveLeft.play();
+                Vid.slaveRight.play();
                 vidState.master.playing = true;
             }
 
@@ -98,6 +100,7 @@
             }
 
             if (Math.abs(Vid.master.currentTime - Vid.slaveLeft.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveLeft.duration) {
+                console.log('out of sync')
                 Vid.slaveLeft.currentTime = Vid.master.currentTime;
             }
         
@@ -118,6 +121,7 @@
                 Vid.slaveLeft.src = 'assets/video/' + src + '_slave_left.webm'
                 Vid.master.load();
             });
+            PC.init(src)
         }
     };
 
@@ -141,15 +145,36 @@
         popMaster: Popcorn('#master-video'),
         popRight: Popcorn('#slave-right-video'),
         popLeft: Popcorn('#slave-left-video'),
-        init: function() {
-           PC.popMaster.code({
-                start: 1,
-                end: 3,
-                onStart: PC.starting,
-                onEnd: PC.ending,
-                target: 'master'
-            });
+        init: function(clip) {
+
+            Popcorn.destroy( PC.popMaster );
+            Popcorn.destroy( PC.popRight );
+            Popcorn.destroy( PC.popLeft );
+
+            switch(clip){
+                case 'heide':
+
+                PC.popMaster.code({
+                    start: 1,
+                    end: 3,
+                    onStart: PC.starting,
+                    onEnd: PC.ending,
+                    target: 'master'
+                });
+                break;
+            }
+
+
         },
+
+        goLeft: function(){
+
+        },
+
+        goRight: function(){
+
+        },
+
         starting: function(options) {
             console.log(options);
         },
