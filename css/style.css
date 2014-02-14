@@ -26,6 +26,7 @@ nav {
     left: 0;
     z-index: 200;
     width: 100%;
+    text-align: center;
 }
 
 nav ul {
@@ -64,6 +65,7 @@ audio {
     left: -88%;
     position: absolute;
     width: 276%;
+    display:none;
 
     -webkit-transition: left 5000ms;
     -moz-transition: left 5000ms;

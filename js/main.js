@@ -85,7 +85,9 @@
             }
 
             $('#main-nav a').on('click', function() {
+                $('#main-nav a').css('color','white')
                 var id = $(this).attr('id');
+                $(this).css('color','#ff0000')
                 Vid.switchVideo(id); 
             });
         },
@@ -102,6 +104,7 @@
             window.requestAnimationFrame(Vid.sync);
         },
         switchVideo: function(src) {
+            $( '#vid-wrapper' ).css('display','block');
             Vid.master.pause();
             Vid.slaveRight.pause();
             Vid.slaveLeft.pause();
