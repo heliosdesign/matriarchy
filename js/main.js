@@ -116,9 +116,9 @@
             vidState.slaveLeft.playing = false;
 
             $('.panel').fadeOut(1000, function(){
-                Vid.master.src = 'assets/video/' + src + '_master.webm';
-                Vid.slaveRight.src = 'assets/video/' + src + '_slave_right.webm';
-                Vid.slaveLeft.src = 'assets/video/' + src + '_slave_left.webm'
+                Vid.master.src = 'assets/video/' + src + '_center.mp4';
+                Vid.slaveRight.src = 'assets/video/' + src + '_right.mp4';
+                Vid.slaveLeft.src = 'assets/video/' + src + '_left.mp4'
                 Vid.master.load();
             });
             PC.init(src)
@@ -143,8 +143,8 @@
 
     var PC = {
         popMaster: Popcorn('#master-video'),
-        popRight: Popcorn('#slave-right-video'),
-        popLeft: Popcorn('#slave-left-video'),
+        popRight: Popcorn('#right-video'),
+        popLeft: Popcorn('#left-video'),
         init: function(clip) {
 
             Popcorn.destroy( PC.popMaster );
