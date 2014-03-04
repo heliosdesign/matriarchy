@@ -1,6 +1,17 @@
 ;(function(){
     var lastTime = 0;
     var vendors = ['webkit', 'moz'];
+
+    currentVid = null
+
+    var wrapperCache = $( '#vid-wrapper' )
+
+    var onethird = parseInt(wrapperCache.css("width"))/3 //console.log($( '#vid-wrapper' ).css("left") + " : " +)
+
+    var leftVolume = 0, rightVolume = 0, panPos = 0
+
+    
+    
     for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
         window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
         window.cancelAnimationFrame =
@@ -32,17 +43,29 @@
 
     var Vid = {
         master: document.getElementById('master-video'),
-        slaveRight: document.getElementById('slave-right-video'),
-        slaveLeft: document.getElementById('slave-left-video'),
+        slaveRight: document.getElementById('right-video'),
+        slaveLeft: document.getElementById('left-video'),
         init: function() {
             Vid.listeners();
             Vid.master.load();
         },
         listeners: function() {
             Vid.master.oncanplaythrough = function() {
+
                 console.log('Master Can Play')
                 vidState.master.ready = true;
                 Vid.slaveRight.load();
+
+                PC.popMaster = Popcorn( "#master-video", {
+                    defaults: {
+                        subtitle: {
+                            target: "subtitles"
+                        }
+                    }
+                });
+
+                PC.popMaster.parseSRT("assets/subtitles/Nana_Abenaa.srt")
+
             }
 
             Vid.master.onwaiting = function() {
@@ -90,6 +113,7 @@
                 $('#main-nav a').css('color','white')
                 var id = $(this).attr('id');
                 $(this).css('color','#ff0000')
+                console.log(id)
                 Vid.switchVideo(id); 
             });
         },
@@ -99,11 +123,24 @@
                 Vid.slaveRight.currentTime = Vid.master.currentTime;
             }
 
-            if (Math.abs(Vid.master.currentTime - Vid.slaveLeft.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveLeft.duration) {
-                console.log('out of sync')
+            
+
+            if (Math.abs(Vid.master.currentTime - Vid.slaveLeft.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveLeft.duration) {    
                 Vid.slaveLeft.currentTime = Vid.master.currentTime;
             }
-        
+
+            panPos =  (parseInt(wrapperCache.css('left')) + onethird) / onethird
+
+            if(panPos > 0) {
+                Vid.slaveRight.volume = 0
+                Vid.slaveLeft.volume = Math.abs(panPos)
+            } 
+
+            if(panPos < 0) {
+                Vid.slaveLeft.volume = 0
+                Vid.slaveRight.volume = Math.abs(panPos)
+            } 
+
             window.requestAnimationFrame(Vid.sync);
         },
         switchVideo: function(src) {
@@ -129,6 +166,7 @@
         init: function() {
             $('#left-panel').hover(function() {
                 $( '#vid-wrapper' ).addClass('show-left');
+
             }, function() {
                 $( '#vid-wrapper' ).removeClass('show-left');
             });
@@ -151,7 +189,19 @@
             Popcorn.destroy( PC.popRight );
             Popcorn.destroy( PC.popLeft );
 
+
+
             switch(clip){
+/*
+
+*/
+                case 'nana':
+
+                console.log(PC.popMaster)
+
+                //PC.popMaster.parseSRT("assets/subtitles/Nana_Yaa.srt")
+                
+                break;               
                 case 'heide':
 
                 PC.popMaster.code({

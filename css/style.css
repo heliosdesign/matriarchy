@@ -95,6 +95,13 @@ audio {
     border-width: 0 1px;
 }
 
+#subtitles{
+    position: absolute;
+    width:100%;
+    height:80px;
+    bottom:0px;
+}
+
 .panel {
     height: 100%;
     float: left;
