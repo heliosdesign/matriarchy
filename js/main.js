@@ -2,13 +2,14 @@
     var lastTime = 0;
     var vendors = ['webkit', 'moz'];
 
-    currentVid = null
+    currentVid = null;
 
     var wrapperCache = $( '#vid-wrapper' )
 
     var onethird = parseInt(wrapperCache.css("width"))/3 //console.log($( '#vid-wrapper' ).css("left") + " : " +)
 
-    var leftVolume = 0, rightVolume = 0, panPos = 0
+    var leftVolume = 0, rightVolume = 0, panPos = 0;
+    var windowWidth = window.innerWidth || document.documentElement.clientWidth|| document.getElementsByTagName('body')[0].clientWidth;
 
     
     
@@ -97,7 +98,7 @@
                     Vid.slaveRight.pause();
                     vidState.slaveRight.playing = false;
                 }
-                window.cancelAnimationFrame();
+                //window.cancelAnimationFrame();
             }
 
             Vid.master.onstalled = function() {
@@ -113,22 +114,30 @@
                     Vid.slaveRight.play();
                     vidState.slaveRight.playing = true;
                 }
-                Vid.sync();
+                //Vid.sync();
             }
 
             Vid.slaveRight.oncanplaythrough = function() {
-                console.log('Right slave can play.');
-                vidState.slaveRight.ready = true;
-                Vid.slaveLeft.load();
+                
+                if (!vidState.slaveRight.ready) {
+                    console.log('Right can play.');
+                    vidState.slaveRight.ready = true;
+                }
+
+                if (!vidState.slaveLeft.ready)
+                    Vid.slaveLeft.load();
             }
 
             Vid.slaveLeft.oncanplaythrough = function() {
-                console.log('Left slave can play.');
-                vidState.slaveLeft.ready = true;
-                Vid.master.play();
-                Vid.slaveLeft.play();
-                Vid.slaveRight.play();
-                vidState.master.playing = true;
+                
+                if (!vidState.slaveLeft.ready) {
+                    console.log('Left can play.');
+                    vidState.slaveLeft.ready = true;
+                    Vid.master.play();
+                    // Vid.slaveLeft.play();
+                    // Vid.slaveRight.play();
+                    vidState.master.playing = true;
+                }
             }
 
             $('#main-nav a').on('click', function() {
@@ -140,33 +149,62 @@
             });
         },
 
-        sync: function() {
+        // sync: function() {
 
-            if (Math.abs(Vid.master.currentTime - Vid.slaveRight.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveRight.duration) {
-                Vid.slaveRight.currentTime = Vid.master.currentTime;
-            }
+        //     var vidWrapper = document.getElementById('vid-wrapper');
+        //     var computedLeft = parseInt(window.getComputedStyle(vidWrapper).getPropertyValue('left'), 10);
+
+        //     var syncIt = false;
+        //     if (computedLeft > -windowWidth/2) {
+        //         syncIt = 'slaveLeft';
+        //     } else if (computedLeft < -(windowWidth+windowWidth/2)) {
+        //         syncIt = 'slaveRight';
+        //     } else {
+        //         if (!Vid.slaveLeft.paused) {
+        //             Vid.slaveLeft.pause();
+        //         }
+        //         if (!Vid.slaveRight.paused) {
+        //             Vid.slaveRight.pause();
+        //         }
+        //     }
+
+        //     //console.log(computedLeft);
+        //     if (syncIt) {
+
+        //         // if (Math.abs(Vid.master.currentTime - Vid[syncIt].currentTime) > 0.5 && Vid.master.currentTime < Vid[syncIt].duration) {
+        //         //     console.log(Vid[syncIt].currentTime + ' | ' + Vid.master.currentTime);
+        //         //     Vid[syncIt].currentTime = Vid.master.currentTime;
+        //         // }
+
+        //         if (Vid[syncIt].paused) {
+        //             Vid[syncIt].currentTime = Vid.master.currentTime;
+        //             console.log('Start playing %s.', syncIt);
+        //             Vid[syncIt].play();
+        //         }
+        //         // if (Math.abs(Vid.master.currentTime - Vid.slaveLeft.currentTime) > 0.5 && Vid.master.currentTime < Vid.slaveLeft.duration) {    
+        //         //     Vid.slaveLeft.currentTime = Vid.master.currentTime;
+        //         // }
+
+                
+
+        //         panPos =  (parseInt(wrapperCache.css('left')) + onethird) / onethird
+
+        //         if(panPos > 0) {
+        //             Vid.slaveRight.volume = 0
+        //             Vid.slaveLeft.volume = Math.abs(panPos)
+        //         } 
+
+        //         if(panPos < 0) {
+        //             Vid.slaveLeft.volume = 0
+        //             Vid.slaveRight.volume = Math.abs(panPos)
+
+        //         } 
+        //     }
 
             
 
-            if (Math.abs(Vid.master.currentTime - Vid.slaveLeft.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveLeft.duration) {    
-                Vid.slaveLeft.currentTime = Vid.master.currentTime;
-            }
-
-            panPos =  (parseInt(wrapperCache.css('left')) + onethird) / onethird
-
-            if(panPos > 0) {
-                Vid.slaveRight.volume = 0
-                Vid.slaveLeft.volume = Math.abs(panPos)
-            } 
-
-            if(panPos < 0) {
-                Vid.slaveLeft.volume = 0
-                Vid.slaveRight.volume = Math.abs(panPos)
-
-            } 
-
-            window.requestAnimationFrame(Vid.sync);
-        },
+        //     window.requestAnimationFrame(Vid.sync);
+        // },
         switchVideo: function(src) {
             currentVid = src
             $( '#vid-wrapper' ).css('display','block');
@@ -191,15 +229,20 @@
         init: function() {
             $('#left-panel').hover(function() {
                 $( '#vid-wrapper' ).addClass('show-left');
-
+                Vid.slaveLeft.currentTime = Vid.master.currentTime;
+                Vid.slaveLeft.play();
             }, function() {
                 $( '#vid-wrapper' ).removeClass('show-left');
+                Vid.slaveLeft.pause();
             });
 
             $('#right-panel').hover(function() {
                 $( '#vid-wrapper' ).addClass('show-right');
+                Vid.slaveRight.currentTime = Vid.master.currentTime;
+                Vid.slaveRight.play();
             }, function() {
                 $( '#vid-wrapper' ).removeClass('show-right');
+                Vid.slaveRight.pause();
             });
         }
     }
