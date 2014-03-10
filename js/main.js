@@ -52,19 +52,41 @@
         listeners: function() {
             Vid.master.oncanplaythrough = function() {
 
+                if(PC.popMaster) Popcorn.destroy( PC.popMaster );
+
                 console.log('Master Can Play')
                 vidState.master.ready = true;
                 Vid.slaveRight.load();
+                
+                switch(currentVid){
 
-                PC.popMaster = Popcorn( "#master-video", {
-                    defaults: {
-                        subtitle: {
-                            target: "subtitles"
+                    case 'nana_yaa':
+
+                    PC.popMaster = Popcorn( "#master-video", {
+                        defaults: {
+                            subtitle: {
+                                target: "subtitles"
+                            }
                         }
-                    }
-                });
+                    });
+                    PC.popMaster.parseSRT("assets/subtitles/Nana_Yaa.srt")
+                    break;
 
-                PC.popMaster.parseSRT("assets/subtitles/Nana_Abenaa.srt")
+                    case 'nana_ako':
+
+                    PC.popMaster = Popcorn( "#master-video", {
+                        defaults: {
+                            subtitle: {
+                                target: "subtitles"
+                            }
+                        }
+                    });
+                    PC.popMaster.parseSRT("assets/subtitles/Nana_Ako.srt")
+                    break;
+
+                }
+
+
 
             }
 
@@ -117,6 +139,7 @@
                 Vid.switchVideo(id); 
             });
         },
+
         sync: function() {
 
             if (Math.abs(Vid.master.currentTime - Vid.slaveRight.currentTime) > 0.2 && Vid.master.currentTime < Vid.slaveRight.duration) {
@@ -139,11 +162,13 @@
             if(panPos < 0) {
                 Vid.slaveLeft.volume = 0
                 Vid.slaveRight.volume = Math.abs(panPos)
+
             } 
 
             window.requestAnimationFrame(Vid.sync);
         },
         switchVideo: function(src) {
+            currentVid = src
             $( '#vid-wrapper' ).css('display','block');
             Vid.master.pause();
             Vid.slaveRight.pause();
@@ -180,38 +205,63 @@
     }
 
     var PC = {
-        popMaster: Popcorn('#master-video'),
-        popRight: Popcorn('#right-video'),
-        popLeft: Popcorn('#left-video'),
+ 
         init: function(clip) {
-
-            Popcorn.destroy( PC.popMaster );
-            Popcorn.destroy( PC.popRight );
-            Popcorn.destroy( PC.popLeft );
-
-
+            if(PC.popMaster) Popcorn.destroy( PC.popMaster );
+            if(PC.popLeft) Popcorn.destroy( PC.popLeft );
+            if(PC.popRight) Popcorn.destroy( PC.popRight );
 
             switch(clip){
-/*
-
-*/
-                case 'nana':
-
-                console.log(PC.popMaster)
-
-                //PC.popMaster.parseSRT("assets/subtitles/Nana_Yaa.srt")
-                
-                break;               
                 case 'heide':
 
-                PC.popMaster.code({
+                PC.popleft= Popcorn('#left-video')
+
+                PC.popLeft.code({
                     start: 1,
-                    end: 3,
-                    onStart: PC.starting,
-                    onEnd: PC.ending,
-                    target: 'master'
+                    end: 61,
+                    onStart: $('.nav-icons-left').fadeIn(500),
+                    onEnd: $('.nav-icons-left').fadeOut(500)
                 });
+
+                 PC.popLeft.code({
+                    start: 78,
+                    end: 128,
+                    onStart: $('.nav-icons-left').fadeIn(500),
+                    onEnd: $('.nav-icons-left').fadeOut(500)
+                }); 
+
+                  PC.popLeft.code({
+                    start: 131,
+                    end: 240,
+                    onStart: $('.nav-icons-left').fadeIn(500),
+                    onEnd: $('.nav-icons-left').fadeOut(500)
+                });                              
                 break;
+ 
+                PC.popRight= Popcorn('#right-video')
+
+                PC.popRight.code({
+                    start: 1,
+                    end: 61,
+                    onStart: $('.nav-icons-right').fadeIn(500),
+                    onEnd: $('.nav-icons-right').fadeOut(500)
+                });
+
+                 PC.popRight.code({
+                    start: 78,
+                    end: 128,
+                    onStart: $('.nav-icons-right').fadeIn(500),
+                    onEnd: $('.nav-icons-right').fadeOut(500)
+                }); 
+
+                  PC.popRight.code({
+                    start: 131,
+                    end: 240,
+                    onStart: $('.nav-icons-right').fadeIn(500),
+                    onEnd: $('.nav-icons-right').fadeOut(500)
+                });                              
+                break; 
+
             }
 
 
