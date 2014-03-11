@@ -215,6 +215,9 @@
             vidState.slaveRight.playing = false;
             vidState.slaveLeft.playing = false;
 
+            vidState.slaveLeft.ready = false;
+            vidState.slaveRight.ready = false;
+
             $('.panel').fadeOut(1000, function(){
                 Vid.master.src = 'assets/video/' + src + '_center.mp4';
                 Vid.slaveRight.src = 'assets/video/' + src + '_right.mp4';
