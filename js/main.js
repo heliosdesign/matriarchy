@@ -229,29 +229,29 @@
 
     var Handlers = {
         init: function() {
-            var tm;
+            var tmL, tmR;
             $('#left-panel').hover(function() {
-                if (tm) {clearTimeout(tm);}
+                if (tmL) {clearTimeout(tmL);}
                 $( '#vid-wrapper' ).addClass('show-left');
                 Vid.slaveLeft.currentTime = Vid.master.currentTime;
                 Vid.slaveLeft.play();
             }, function() {
-                if (tm) {clearTimeout(tm);}
+                if (tmL) {clearTimeout(tmL);}
                 $( '#vid-wrapper' ).removeClass('show-left');
-                tm = setTimeout(function() {
+                tmL = setTimeout(function() {
                     Vid.slaveLeft.pause();
                 }, 5000);
             });
 
             $('#right-panel').hover(function() {
-                if (tm) {clearTimeout(tm);}
+                if (tmR) {clearTimeout(tmR);}
                 $( '#vid-wrapper' ).addClass('show-right');
                 Vid.slaveRight.currentTime = Vid.master.currentTime;
                 Vid.slaveRight.play();
             }, function() {
-                if (tm) {clearTimeout(tm);}
+                if (tmR) {clearTimeout(tmR);}
                 $( '#vid-wrapper' ).removeClass('show-right');
-                tm = setTimeout(function() {
+                tmR = setTimeout(function() {
                     Vid.slaveRight.pause();
                 }, 5000);
             });
