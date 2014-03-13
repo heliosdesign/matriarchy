@@ -1,1 +1,62 @@
-﻿100:00:01,401 --> 00:00:07,373...200:00:07,374 --> 00:00:08,908My grandmother was the Queen Mother.300:00:08,909 --> 00:00:10,676...400:00:10,677 --> 00:00:11,143When she died my elder sister took over,500:00:11,144 --> 00:00:14,080..;600:00:14,081 --> 00:00:16,449and then when she died I was made the Queen Mother.700:00:16,450 --> 00:00:26,459...800:00:26,460 --> 00:00:27,226In the Asante Kingdom, when someone rapes a child or a family member,900:00:27,227 --> 00:00:28,895,,,1000:00:28,896 --> 00:00:26,559In the Asante Kingdom, when someone rapes a child or a family member,1100:00:26,560 --> 00:00:28,895..1200:00:28,896 --> 00:00:29,028he is banished from the village1300:00:29,029 --> 00:00:32,198...1400:00:32,199 --> 00:00:32,498This is because the person has brought a curse on the village,1500:00:32,499 --> 00:00:34,133,,1600:00:34,134 --> 00:00:34,567so the person is driven out.1700:00:34,568 --> 00:00:41,340...1800:00:41,341 --> 00:00:43,042Then the village performs certain rituals to take the curse out of the land.1900:00:43,043 --> 00:00:51,784...2000:00:51,785 --> 00:00:52,618Anything on this land, be it palm tree, or sand --2100:00:52,619 --> 00:00:58,424..'2200:00:58,425 --> 00:00:58,624because in this town we have sand for construction and building purposes --2300:00:58,625 --> 00:01:05,932...2400:01:05,933 --> 00:01:05,932therefore when we sell these resources from the land, whatever the people need, we provide it2500:01:05,933 --> 00:01:07,733...2600:01:07,734 --> 00:01:08,167from the proceeds.2700:01:08,168 --> 00:01:19,212...2800:01:19,213 --> 00:01:19,979Some was used to build toilet facilities, electricity, wells for water2900:01:19,980 --> 00:01:29,355...3000:01:29,356 --> 01:35:37,838and also with the introduction of formal education we built primary schools for our people.
+﻿1
+00:00:00,550 --> 00:00:06,620
+My grandmother was the queen mother
+
+2
+00:00:06,920 --> 00:00:10,420
+ when when she died my elder sister took over,
+
+3
+00:00:11,480 --> 00:00:13,440
+and then when she died I was made the Queen Mother
+
+4
+00:00:16,300 --> 00:00:26,400
+In the Asante Kingdom, when someone rapes a 
+child or a family member, 
+
+5
+00:00:26,620 --> 00:00:28,760
+he is banished from the village,
+
+6
+00:00:28,940 --> 00:00:32,260
+This is because the person has brought a curse on 
+the village,
+
+7
+00:00:32,320 --> 00:00:34,180
+so the person is driven out.
+
+8
+00:00:34,228 --> 00:00:41,428
+Then the village performs certain rituals to take the 
+curse out of the land.
+
+9
+00:00:43,005 --> 00:00:51,794
+Anything on this land, be it palm tree, or sand -
+
+10
+00:00:52,628 --> 00:00:58,365
+because in this town we have sand for construction 
+and building purposes -
+
+11
+00:00:58,580 --> 00:01:05,575
+therefore when we sell these resources from the land, 
+whatever the people need, we provide it 
+
+12
+00:01:05,925 --> 00:01:07,750
+from the proceeds.
+
+13
+00:01:08,125 --> 00:01:19,225
+Some was used to build toilet facilities, electricity, 
+wells for water
+
+14
+00:01:19,825 --> 00:01:29,250
+and also with the introduction of formal education we 
+built primary schools for our people.
