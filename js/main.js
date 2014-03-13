@@ -51,7 +51,12 @@
             Vid.master.load();
         },
         listeners: function() {
-            Vid.master.oncanplaythrough = function() {
+
+            
+            //     console.log('TESTING LISTENER');
+            // }, false);
+            
+           Vid.master.addEventListener('canplaythrough', function(){
 
                 if(PC.popMaster) Popcorn.destroy( PC.popMaster );
 
@@ -89,7 +94,7 @@
 
 
 
-            }
+            }, false);
 
             Vid.master.onwaiting = function() {
                 console.log('Master is waiting for buffer');
@@ -105,20 +110,20 @@
                 console.log('stalled');
             }
 
-            Vid.master.onplaying = function() {
+            Vid.master.addEventListener('canplaythrough', function(){
                 console.log('Master is playing');
                 if ($('.panel').is(':hidden')) {
                     $('.panel').fadeIn(1000);
                 }
+
                 // if (!vidState.slaveRight.playing) {
                 //     Vid.slaveRight.play();
                 //     vidState.slaveRight.playing = true;
                 // }
                 Vid.sync();
-            }
+            }, false);
 
-            Vid.slaveRight.oncanplaythrough = function() {
-                
+            Vid.slaveRight.addEventListener('canplaythrough', function(){
                 if (!vidState.slaveRight.ready) {
                     console.log('Right can play.');
                     vidState.slaveRight.ready = true;
@@ -126,9 +131,9 @@
 
                 if (!vidState.slaveLeft.ready)
                     Vid.slaveLeft.load();
-            }
+            }, false);
 
-            Vid.slaveLeft.oncanplaythrough = function() {
+            Vid.slaveLeft.addEventListener('canplaythrough', function(){
                 
                 if (!vidState.slaveLeft.ready) {
                     console.log('Left can play.');
@@ -138,7 +143,7 @@
                     // Vid.slaveRight.play();
                     vidState.master.playing = true;
                 }
-            }
+            }, false);
 
             $('#main-nav a').on('click', function() {
                 $('#main-nav a').css('color','white')
