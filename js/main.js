@@ -110,10 +110,10 @@
                 if ($('.panel').is(':hidden')) {
                     $('.panel').fadeIn(1000);
                 }
-                if (!vidState.slaveRight.playing) {
-                    Vid.slaveRight.play();
-                    vidState.slaveRight.playing = true;
-                }
+                // if (!vidState.slaveRight.playing) {
+                //     Vid.slaveRight.play();
+                //     vidState.slaveRight.playing = true;
+                // }
                 Vid.sync();
             }
 
