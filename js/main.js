@@ -112,8 +112,8 @@
 
             Vid.master.addEventListener('canplaythrough', function(){
                 console.log('Master is playing');
-                if ($('.panel').is(':hidden')) {
-                    $('.panel').fadeIn(1000);
+                if ($('#vid-wrapper').is(':hidden')) {
+                    $('#vid-wrapper').fadeIn(1000);
                 }
 
                 // if (!vidState.slaveRight.playing) {
@@ -221,11 +221,14 @@
 
             vidState.slaveLeft.ready = false;
             vidState.slaveRight.ready = false;
+            vidState.master.ready = false;
 
-            $('.panel').fadeOut(1000, function(){
+            
+
+            $('#vid-wrapper').fadeOut(1000, function(){
                 Vid.master.src = 'assets/video/' + src + '_center.mp4';
                 Vid.slaveRight.src = 'assets/video/' + src + '_right.mp4';
-                Vid.slaveLeft.src = 'assets/video/' + src + '_left.mp4'
+                Vid.slaveLeft.src = 'assets/video/' + src + '_left.mp4';
                 Vid.master.load();
             });
             PC.init(src)
@@ -341,6 +344,7 @@
 
         }
     }
+
 
     Vid.init();
     Handlers.init();
