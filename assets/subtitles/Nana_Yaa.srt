@@ -1,1 +1,80 @@
-﻿100:00:01,001 --> 00:00:04,937My name is Nana Yaa Adomaa.200:00:04,938 --> 00:00:05,973My name is Nana Yaa Adomaa.300:00:11,979 --> 00:00:14,081My stool name is Adomakoa Atookuafuo, the king’s wife Adomakoa Atookuafuo400:00:17,684 --> 00:00:19,953In this town, the stool belongs to the wife of the Asante King.500:00:24,358 --> 00:00:25,425The Asante King gave this land to his wife who lived with the Atookwa people.600:00:33,200 --> 00:00:34,501Because there is no male leader in this town, I the King’s wife am in charge of this town.700:00:38,272 --> 00:00:38,772When there is a conflict between two parties, the matter is presented before me.800:00:45,112 --> 00:00:45,712I sit in council with my Elders and brainstorm about it in order to bring peace.900:00:51,552 --> 00:00:51,751We hear both parties and based on our findings the one who is at fault is made to apologize1000:00:51,752 --> 00:00:55,121.1100:00:55,122 --> 00:00:58,658and the one who has been offended is asked to be patient with the other1200:00:58,659 --> 00:01:00,026'1300:01:00,027 --> 00:01:00,160When someone needs anything, they come to me1400:01:02,896 --> 00:01:03,030and when I am in need of anything, I also ask1500:01:04,498 --> 00:01:05,232I live peacefully with everyone.1600:01:10,437 --> 00:01:10,637My town folks see me as the King’s wife with a high-level of knowledge.1700:01:14,875 --> 00:01:15,042When there is a situation that calls for my advice or a problem I need to solve, my Elders present1800:01:16,410 --> 00:01:16,643the matter to me and I preside over it.1900:01:19,646 --> 00:01:19,913That is how we rule in this town.2000:01:21,582 --> 00:01:21,648Everyone is welcome at any time to visit me.
+﻿1
+00:00:00,820 --> 00:00:05,100
+My name is Nana Yaa Adomaa.
+
+2
+00:00:05,940 --> 00:00:11,880
+My stool name is Adomakoa Atookuafuo, the king's 
+wife Adomakoa Atookuafuo
+
+3
+00:00:13,860 --> 00:00:17,833
+I}n this town, the stool belongs to the wife of the Asante King.
+
+4
+00:00:19,366 --> 00:00:24,133
+The Asante King gave this land to his wife who lived 
+with the Atookwa people.
+
+5
+00:00:25,500 --> 00:00:33,100
+Because there is no male leader in this town, I the 
+King's wife am in charge of this town.
+
+6
+00:00:34,566 --> 00:00:38,400
+When there is a conflict between two parties, the 
+matter is presented before me.
+
+7
+00:00:38,600 --> 00:00:44,700
+I sit in council with my Elders and brainstorm 
+about it in order to bring peace.
+
+8
+00:00:45,733 --> 00:00:51,630
+We hear both parties and based on our findings the 
+one who is at fault is made to apologize
+
+9
+00:00:51,766 --> 00:00:55,300
+and the one who has been offended is asked to be 
+patient with the other
+
+10
+00:00:55,400 --> 00:00:58,133
+so that we can all live peacefully
+
+11
+00:00:58,400 --> 00:01:00,233
+When someone needs anything, they come to me
+
+12
+00:01:00,233 --> 00:01:02,833
+and when I am in need of anything, I also ask
+
+13
+00:01:03,000 --> 00:01:04,400
+I live peacefully with everyone.
+
+14
+00:01:05,033 --> 00:01:10,466
+My town folks see me as the King's wife with a 
+high-level of knowledge.
+
+15
+00:01:10,666 --> 00:01:14,966
+When there is a situation that calls for my advice or 
+a problem I need to solve, my Elders present
+
+16
+00:01:15,100 --> 00:01:16,266
+the matter to me and I preside over it.
+
+17
+00:01:16,600 --> 00:01:19,666
+That is how we rule in this town.
+
+18
+00:01:19,900 --> 00:01:21,660
+Everyone is welcome at any time to visit me.
