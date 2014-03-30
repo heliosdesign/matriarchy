@@ -63,31 +63,123 @@
                 console.log('Master Can Play')
                 vidState.master.ready = true;
                 Vid.slaveRight.load();
+
+                PC.popMaster = Popcorn( "#master-video", {
+                    defaults: {
+                        subtitle: {
+                            target: "subtitles"
+                        }
+                    }
+                });
                 
                 switch(currentVid){
 
+                    case 'heide':
+
+                    PC.popMaster.code({
+                        start: 8,
+                        end: 60,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    });
+
+                     PC.popMaster.code({
+                        start: 77,
+                        end: 129,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)},
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    }); 
+
+                      PC.popMaster.code({
+                        start: 131,
+                        end: 240,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)},
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    });   
+
+                    PC.popMaster.code({
+                        start: 53,
+                        end: 133,
+                        onStart: function(){$('.nav-icons-right').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-right').fadeOut(500)}
+                    });
+
+                     PC.popMaster.code({
+                        start: 165,
+                        end: 240,
+                        onStart: function(){$('.nav-icons-right').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-right').fadeOut(500)}
+                    });                   
+                    break;
+
+                    case 'helen':
+
+                    PC.popMaster.code({
+                        start: 36,
+                        end: 128,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    });
+
+                     PC.popMaster.code({
+                        start: 148,
+                        end: 157,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)},
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    }); 
+
+
+                    PC.popMaster.code({
+                        start: 41,
+                        end: 170,
+                        onStart: function(){$('.nav-icons-right').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-right').fadeOut(500)}
+                    });
+                  
+                    break;
+
                     case 'nana_yaa':
 
-                    PC.popMaster = Popcorn( "#master-video", {
-                        defaults: {
-                            subtitle: {
-                                target: "subtitles"
-                            }
-                        }
+
+                    PC.popMaster.code({
+                        start: 0,
+                        end: 69,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    }); 
+
+
+                    PC.popMaster.code({
+                        start: 0,
+                        end: 57,
+                        onStart: function(){$('.nav-icons-right').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-right').fadeOut(500)}
                     });
+
+
                     PC.popMaster.parseSRT("assets/subtitles/Nana_Yaa.srt")
                     break;
 
                     case 'nana_ako':
 
-                    PC.popMaster = Popcorn( "#master-video", {
-                        defaults: {
-                            subtitle: {
-                                target: "subtitles"
-                            }
-                        }
+
+                    PC.popMaster.code({
+                        start: 19,
+                        end: 56,
+                        onStart: function(){$('.nav-icons-left').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-left').fadeOut(500)}
+                    }); 
+
+
+                    PC.popMaster.code({
+                        start: 10,
+                        end: 91,
+                        onStart: function(){$('.nav-icons-right').fadeIn(500)} ,
+                        onEnd: function(){$('.nav-icons-right').fadeOut(500)}
                     });
+
                     PC.popMaster.parseSRT("assets/subtitles/Nana_Ako.srt")
+
                     break;
 
                 }
@@ -148,7 +240,10 @@
             $('#main-nav a').on('click', function() {
                 $('#main-nav a').css('color','white')
                 var id = $(this).attr('id');
-                $(this).css('color','#ff0000')
+                if(id !='matriarchy'){
+                    $(this).css('color','#ff0000')                  
+                }
+
                 console.log(id)
                 Vid.switchVideo(id); 
             });
@@ -211,7 +306,28 @@
         },
         switchVideo: function(src) {
             currentVid = src
+
+            console.log(src)
             $( '#vid-wrapper' ).css('display','block');
+
+            if(src== 'matriarchy'){
+
+                $('.nav-icons-right').fadeIn(500)
+                $('.nav-icons-left').fadeOut(500)
+
+                $('#matriarchy-cover').fadeIn(1000) 
+
+                $('#landing-text').css('display','block')
+                $('#subtitles').css('display','none')
+
+            } else {
+                $('#subtitles').css('display','block')
+                $('.nav-icons-right').css('display','none')
+                $('.nav-icons-left').css('display','none')
+                $('#landing-text').css('display','none')
+                $('#matriarchy-cover').fadeOut(1000)  
+            }
+            
             Vid.master.pause();
             Vid.slaveRight.pause();
             Vid.slaveLeft.pause();
@@ -224,20 +340,27 @@
             vidState.master.ready = false;
 
             
-
+            if(src!= 'matriarchy'){
             $('#vid-wrapper').fadeOut(1000, function(){
                 Vid.master.src = 'assets/video/' + src + '_center.mp4';
                 Vid.slaveRight.src = 'assets/video/' + src + '_right.mp4';
                 Vid.slaveLeft.src = 'assets/video/' + src + '_left.mp4';
                 Vid.master.load();
             });
-            PC.init(src)
+                PC.init(src)
+            } else{
+                Vid.master.src = '';
+                Vid.slaveRight.src = '';
+                Vid.slaveLeft.src = '';              
+            }
+            
         }
     };
 
     var Handlers = {
         init: function() {
             var tmL, tmR;
+            console.log("handlers init")
             $('#left-panel').hover(function() {
                 if (tmL) {clearTimeout(tmL);}
                 $( '#vid-wrapper' ).addClass('show-left');
@@ -273,58 +396,58 @@
             if(PC.popLeft) Popcorn.destroy( PC.popLeft );
             if(PC.popRight) Popcorn.destroy( PC.popRight );
 
-            // switch(clip){
-            //     case 'heide':
+            switch(clip){
+                case 'heide':
 
-            //         PC.popleft= Popcorn('#left-video')
+                    // PC.popleft = Popcorn('#left-video')
 
-            //         PC.popLeft.code({
-            //             start: 1,
-            //             end: 61,
-            //             onStart: $('.nav-icons-left').fadeIn(500),
-            //             onEnd: $('.nav-icons-left').fadeOut(500)
-            //         });
+                    // PC.popLeft.code({
+                    //     start: 8,
+                    //     end: 60,
+                    //     onStart: $('.nav-icons-left').fadeIn(500),
+                    //     onEnd: $('.nav-icons-left').fadeOut(500)
+                    // });
 
-            //          PC.popLeft.code({
-            //             start: 78,
-            //             end: 128,
-            //             onStart: $('.nav-icons-left').fadeIn(500),
-            //             onEnd: $('.nav-icons-left').fadeOut(500)
-            //         }); 
+                    //  PC.popLeft.code({
+                    //     start: 77,
+                    //     end: 129,
+                    //     onStart: $('.nav-icons-left').fadeIn(500),
+                    //     onEnd: $('.nav-icons-left').fadeOut(500)
+                    // }); 
 
-            //           PC.popLeft.code({
-            //             start: 131,
-            //             end: 240,
-            //             onStart: $('.nav-icons-left').fadeIn(500),
-            //             onEnd: $('.nav-icons-left').fadeOut(500)
-            //         });                              
-            //         break;
+                    //   PC.popLeft.code({
+                    //     start: 131,
+                    //     end: 240,
+                    //     onStart: $('.nav-icons-left').fadeIn(500),
+                    //     onEnd: $('.nav-icons-left').fadeOut(500)
+                    // });                              
+
  
-            //     PC.popRight= Popcorn('#right-video')
+                    // PC.popRight= Popcorn('#right-video')
 
-            //     PC.popRight.code({
-            //         start: 1,
-            //         end: 61,
-            //         onStart: $('.nav-icons-right').fadeIn(500),
-            //         onEnd: $('.nav-icons-right').fadeOut(500)
-            //     });
+                    // PC.popRight.code({
+                    //     start: 1,
+                    //     end: 61,
+                    //     onStart: $('.nav-icons-right').fadeIn(500),
+                    //     onEnd: $('.nav-icons-right').fadeOut(500)
+                    // });
 
-            //      PC.popRight.code({
-            //         start: 78,
-            //         end: 128,
-            //         onStart: $('.nav-icons-right').fadeIn(500),
-            //         onEnd: $('.nav-icons-right').fadeOut(500)
-            //     }); 
+                    //  PC.popRight.code({
+                    //     start: 78,
+                    //     end: 128,
+                    //     onStart: $('.nav-icons-right').fadeIn(500),
+                    //     onEnd: $('.nav-icons-right').fadeOut(500)
+                    // }); 
 
-            //       PC.popRight.code({
-            //         start: 131,
-            //         end: 240,
-            //         onStart: $('.nav-icons-right').fadeIn(500),
-            //         onEnd: $('.nav-icons-right').fadeOut(500)
-            //     });                              
-            //     break; 
+                    //   PC.popRight.code({
+                    //     start: 131,
+                    //     end: 240,
+                    //     onStart: $('.nav-icons-right').fadeIn(500),
+                    //     onEnd: $('.nav-icons-right').fadeOut(500)
+                    // });                              
+                    break; 
 
-            // }
+            }
 
 
         },

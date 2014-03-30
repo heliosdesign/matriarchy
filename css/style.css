@@ -28,26 +28,33 @@ body {
     background: black;
     color: white;
     font-family: Helvetica, Arial, sans-serif;
+    margin:0px;
+    padding:0px;
 }
 
 nav {
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.25);
     position: absolute;
-    top: 10;
+    top: 0;
     left: 0;
-    z-index: 200;
     width: 100%;
-    text-align: center;
+   
 }
-
+nav .corner-logo {
+    float:left;
+}
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin:0;
+    text-align: center;
+    width:100%;
+    border-bottom:1px solid;
 }
 
 nav li {
     display: inline-block;
-    margin: 0 2em;
+    padding: 10px;
 }
 
 nav a {
@@ -73,8 +80,9 @@ audio {
     height: 100%;
     left: -88%;
     position: absolute;
+    top:0px;
     width: 276%;
-    display:none;
+    /*display:none;*/
 
     -webkit-transition: left 5000ms;
     -moz-transition: left 5000ms;
@@ -91,8 +99,15 @@ audio {
 }
 
 #master-panel {
-    border: 1px solid red;
-    border-width: 0 1px;
+/*    border: 1px solid red;
+    border-width: 0 1px;*/
+}
+
+#landing-text {
+    position: absolute;
+    bottom:10%;
+    right:10%;
+    width:70%;
 }
 
 #subtitles{
@@ -100,10 +115,9 @@ audio {
     width:100%;
     bottom:0px;
     text-align: center;
-    font-size: 1.5em;
     right:0px;
     left:0px;
-    text-shadow: -2px -2px #000000;
+    background:rgba(0,0,0,0.25);
 }
 
 .panel {
@@ -113,25 +127,29 @@ audio {
     overflow: hidden;
     top: 0;
     width: 33.3333333333%;
+/*    border:1px solid;*/
 }
 
 .nav-icons {
     font-family: 'parks';
     position: absolute;
-    font-size:3.5em;
+    font-size:80px;
     color: #ff0000;
     pointer-events:none;
-    width:50px;
     height:100%;
-    top:40%;
+    top:50%;
+    margin-top:-30px;
+    padding:10px;
 }
 
 .nav-icons-left{
     left:0px;
+    display:none;
 }
 
 .nav-icons-right{
     right:0px;
+    display: block;
 }
 
 
@@ -147,4 +165,13 @@ audio {
     video {
         height: 100%;
     }
+}
+
+#matriarchy-cover {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    text-align:center;
 }
